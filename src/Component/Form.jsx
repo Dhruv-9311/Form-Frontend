@@ -7,6 +7,7 @@ const Form = () => {
     firstName: '',
     lastName: '',
     email: '',
+    password: '',
     phone: '',
     age: '',
     gender: '',
@@ -37,6 +38,7 @@ const Form = () => {
           firstName: '',
           lastName: '',
           email: '',
+          password: '',
           phone: '',
           age: '',
           gender: '',
@@ -85,6 +87,16 @@ const Form = () => {
           placeholder="Email *" 
           name="email" 
           value={formData.email}
+          onChange={handleChange}
+          required
+          className="form-input"
+        />
+
+        <input
+          type="password"
+          placeholder="Password *"
+          name="password"
+          value={formData.password}
           onChange={handleChange}
           required
           className="form-input"
@@ -180,8 +192,8 @@ const Form = () => {
           type="submit" 
           className="submit-button"
         >
-          Submit Form
-        </button>
+          Register
+        </button> 
       </form>
     </div>
   )
