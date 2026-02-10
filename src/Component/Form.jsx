@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Form.css'
+import axios from 'axios'
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -26,24 +27,12 @@ const Form = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     try {
-      const response = await fetch('http://localhost:5000/forms/post', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(
-          formData
-        )
-      })
-      
-      if (response.ok) {
-        const result = await response.json()
-        console.log('Form submitted successfully:', result)
-        alert('Form submitted successfully! Check console for data.')
-        
-        // Reset form
+      const response = await axios.post('http://localhost:3001/forms/post', formData)
+      console.log(response)
+
+      if (response.status === 200 || response.status === 201) {
         setFormData({
           firstName: '',
           lastName: '',
@@ -57,13 +46,12 @@ const Form = () => {
           zipCode: '',
           country: ''
         })
+        setErrors({})
       } else {
-        console.error('Form submission failed')
-        alert('Form submission failed! Please try again.')
+        console.log('Unexpected status:', response.status)
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
-      alert('Error submitting form! Please check console.')
+      console.log(error)
     }
   }
   
