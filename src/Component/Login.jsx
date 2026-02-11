@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import './Login.css'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
       if(e.target.name === 'email') {
@@ -24,6 +26,7 @@ const Login = () => {
                 setEmail('');
                 setPassword('');
                 setMessage('✅ Login successful!');
+                navigate('/dashboard');
             }
         }).catch((error) => {
             console.log(error);
@@ -40,7 +43,9 @@ const Login = () => {
               value={email}
               onChange={handleChange}
               required
+              className='input-field'
             />
+            
             <input 
               type="password" 
               name="password"
@@ -48,7 +53,8 @@ const Login = () => {
               value={password}
               onChange={handleChange}
               required
-            />
+              className='input-field'
+            />            
             <button type="submit">Login</button>
         </form>
         
@@ -58,6 +64,7 @@ const Login = () => {
                 {message}
             </div>
         )}
+        
     </div>
   )
 }
