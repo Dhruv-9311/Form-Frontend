@@ -1,0 +1,29 @@
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+}
+
+.success {
+    background-color: #d4edda;
+}
+
+.info {
+    background-color: #007bff;
+}
+
+.error {
+    background-color: #f8d7da;
+}
+
+.verification-link {
+    color: #ffc107;
+    text-decoration: underline;
+}
+
+.verification-link:hover {
+    color: #e0a800;
+}
